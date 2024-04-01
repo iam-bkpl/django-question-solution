@@ -1,0 +1,9 @@
+mynums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+def calc_sum(myList:list):
+    for i in range(myList):
+        print(i)
+
+
+
+calc_sum(mynums)
