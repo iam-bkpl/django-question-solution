@@ -3,6 +3,7 @@ from django.db import models
 class Author(models.Model):
     # public attribute 
     name = models.CharField(max_length=255)
+    no_of_books_written = models.PositiveIntegerField()
 
     # private attribute 
     _contact = models.CharField(max_length=255)
@@ -31,19 +32,19 @@ class Author(models.Model):
     
 
 
-# Creating author 
-python_author = Author()
-python_author.name = "Elon Musk"
+# # Creating author 
+# python_author = Author()
+# python_author.name = "Elon Musk"
 
-# setting author address and contact
-python_author.set_address("USA")
-python_author.set_contact("0000")
+# # setting author address and contact
+# python_author.set_address("USA")
+# python_author.set_contact("0000")
 
 
 # getting author name address and contact
-author_name = python_author.name
-author_address  = python_author.get_address()
-author_contact = python_author.get_contact()
+# author_name = python_author.name
+# author_address  = python_author.get_address()
+# author_contact = python_author.get_contact()
 
 
 
@@ -52,6 +53,7 @@ class Book(models.Model):
     # one author can write multiple books
     author = models.ForeignKey(Author,on_delete=models.CASCADE)
     publication_date = models.DateField()
+
 
     def __str__(self):
         return self.title
