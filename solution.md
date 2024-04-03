@@ -94,7 +94,7 @@ we basically use list to store the dynamic data that might need to be updated in
 Tuples: It is immutable data structure in python where we store such info that is not supposed to be changed in future, such as config datas.
 
 for eg :
-mytuple = (1,2,3,4)
+`mytuple = (1,2,3,4)`
 
 ```python
 STATUS_CHOICES = (
@@ -161,20 +161,23 @@ Django ORM basically acts as the bridge between the django code and the database
 for eg:
 
 1. Allows us to interact with database using python objects and methods
-2. We can use same ORM to query all types of databases. For example , to get all the books we can write : books = Book.objects.al(). This will return all the books no matter which databases we use. in short we don't need to worry about the raw sql statements to handle different databases
+2. We can use same ORM to query all types of databases. For example , to get all the books we can write : `books = Book.objects.al()`. This will return all the books no matter which databases we use. in short we don't need to worry about the raw sql statements to handle different databases
 3. It also save our application from SQL injection attacts
 4. It helps to represent the entities as an python object which makes it easier to store data and manipulate them
 
 for example:
 we can use orm to interact with the databse holding book record, such as:
+
+```python
 all_books = Books.objects.all()
 first_book = Books.objects.get(id=1)
+```
 
 change the name of the book
-first_book.name = "first book 2.0"
+`first_book.name = "first book 2.0"`
 
 delete the book
-first_book.delete()
+`first_book.delete()`
 
 **Q6: Create a function in Python that takes a list of numbers as input and returns the sum of all even numbers in the list.**
 
@@ -249,8 +252,11 @@ class Book(models.Model):
 Decorators are the way of adding additional functionality to a function. They are primarly used for validating authentication, setting permissions , logging etc in django.
 for example in djanog, if we have some protected views which required user to be logged in, we can use decorator called @login_required
 
+```python
 @login_required
-def protected_view(request): # protected code
+def protected_view(request): 
+    # protected code
+```
 
 Example of custom decorators :
 
@@ -421,17 +427,19 @@ we already created the database 2 models, (book and author) in previous question
 To create database schema of that model class. we can follow folling steps.
 
 1. create migration file
-   python3 manage.py makemigrations
+   `python3 manage.py makemigrations`
    This will create a migration file, in our django project we got "0001_initial.py", which contains the information about database schema for author and book model
 
 2. we can review the file if we want to
 3. After that, we can apply the migrations
-   python3 manage.py migrate
+   `python3 manage.py migrate`
    This will actually, update the database, we have to understand that, the previous command is just to create the migration file, and this command will actually reflect the change to the database schema.
 4. We can also verify if the migration was applied
-   python3 manage.py showmigrations
+   `python3 manage.py showmigrations`
    This command helps us to verify the migrations applied to our application
 5. Suppose we decided to add another field, to store the number of books written by a author, to do that, we just need to add that attribute on the author model and create migration file(in our case we get file 00002_author_no_of_books_written.py) and apply migration
 6. let's suppose we decided not to add the no of books written field in the databas. That is we wanted the previous database schema.
    we can easily do this by.
-   python3 manage.py migrate core 0001
+   `python3 manage.py migrate core 0001`
+
+[go Back](README.md)
